@@ -9,8 +9,7 @@ const { sortTodoLists, sortTodos } = require("./lib/sort");
 const store = require("connect-loki");
 
 const app = express();
-const host = "localhost";
-const port = 3000;
+const port = process.env.PORT || 3000;
 const LokiStore = store(session);
 
 app.set("views", "./views");
@@ -292,6 +291,6 @@ app.use((err, req, res, _next) => {
 });
 
 // Listener
-app.listen(port, host, () => {
+app.listen(port, () => {
   console.log(`Todos is listening on port ${port} of ${host}!`);
 });
